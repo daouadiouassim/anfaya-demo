@@ -1,0 +1,113 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "order_ref": {
+      "type": "string",
+      "description": "R\u00e9f\u00e9rence de commande lisible, ex. ANF-8K2P4"
+    },
+    "full_name": {
+      "type": "string",
+      "description": "Nom complet du client"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Num\u00e9ro de t\u00e9l\u00e9phone du client"
+    },
+    "wilaya_code": {
+      "type": "string",
+      "description": "Code de la wilaya (01 \u00e0 58)"
+    },
+    "wilaya_name": {
+      "type": "string",
+      "description": "Nom de la wilaya"
+    },
+    "address": {
+      "type": "string",
+      "description": "Adresse de livraison ou bureau Stop Desk"
+    },
+    "product_id": {
+      "type": "string",
+      "description": "Identifiant du produit command\u00e9"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Nom du produit command\u00e9"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Quantit\u00e9 command\u00e9e"
+    },
+    "unit_price": {
+      "type": "number",
+      "description": "Prix unitaire en DA"
+    },
+    "subtotal": {
+      "type": "number",
+      "description": "Sous-total en DA"
+    },
+    "delivery_type": {
+      "type": "string",
+      "enum": [
+        "domicile",
+        "stopdesk"
+      ],
+      "description": "Mode de livraison"
+    },
+    "delivery_fee": {
+      "type": "number",
+      "description": "Frais de livraison en DA"
+    },
+    "total": {
+      "type": "number",
+      "description": "Total \u00e0 payer \u00e0 la livraison en DA"
+    },
+    "gift_note": {
+      "type": "string",
+      "description": "Message \u00e0 \u00e9crire \u00e0 la main sur la carte cadeau"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "nouvelle",
+        "confirmee",
+        "expediee",
+        "livree",
+        "annulee"
+      ],
+      "default": "nouvelle",
+      "description": "Statut de traitement de la commande"
+    }
+  },
+  "required": [
+    "order_ref",
+    "full_name",
+    "phone",
+    "wilaya_code",
+    "address",
+    "product_id",
+    "total"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
